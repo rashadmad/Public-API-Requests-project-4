@@ -31,5 +31,5 @@ const createCard = (name,img,location) => {
         //add location
         .append('<p class="card-text cap">' + location + '</p>')
 }
-createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", )
+createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
 createSearch()
