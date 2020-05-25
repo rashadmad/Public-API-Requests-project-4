@@ -31,5 +31,28 @@ const createCard = (name,img,location) => {
         //add location
         .append('<p class="card-text cap">' + location + '</p>')
 }
+
+const createModal = (name,img) => {
+
+    let counter = 0
+
+    //create a container for the modal
+    $('body').append('<div class="modal-container"></div>');
+    //create a modal inside of the modal container
+    $('.modal-container')
+        .append('<div class="modal"></div>')
+    $('.modal')    
+        //add image to modal
+        .append('<img class="modal-img" src=' + img + ' alt="profile picture of ' + name + '">')
+        //add image to modal
+        .append('<h3 id="name" class="modal-name cap">name</h3>')
+    //the next group of items are some hwat similar sow I will use a for loop
+    while (counter < 5) {
+        counter = counter + 1;
+        $('.modal').append('<p class="modal-text"></p>')
+    }
+}
+
+createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
 createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
 createSearch()
