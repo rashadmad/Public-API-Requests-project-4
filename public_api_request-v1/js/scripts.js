@@ -12,14 +12,19 @@ const createCard = (name,img,location) => {
     
     //add a container for car info with an email, name and city
     $('.gallery')
-    //add the card info container
-    .append('<div class="card-info-container"></div>')
-    //add the name
-    .append('<h3 id=' + name + 'class="card-name cap">' + name + '</h3>')
-    //add email
-    .append('<p class="card-text">' + name + '@awesomestartup.com</p>')
-    //add location
-    .append('<p class="card-text cap">' + location + '</p>')
+        //add the card info container
+        .append('<div class="card-info-container"></div>')
+
+    //add data to the card 
+    $('.card-info-container')
+        //add name
+        .append('<h3 id=' + name + 'class="card-name cap">' + name + '</h3>')
+        //add the card info container
+        .append('<div class="card-info-container"></div>')
+        //add email
+        .append('<p class="card-text">' + name + '@awesomestartup.com</p>')
+        //add location
+        .append('<p class="card-text cap">' + location + '</p>')
 }
 createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", )
 createSearch()
