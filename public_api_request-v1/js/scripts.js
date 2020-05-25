@@ -8,7 +8,12 @@ const createSearch = () => {
 const createCard = (name,img,location) => {
     //create a card and add a profile picture inside of it
     $('.gallery')
-    .append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">')
+        //create a container for the image
+        .append('<div class="card-img-container"></div>')
+
+    //add the mage to the container
+    $('.card-img-container')    
+        .append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">')
     
     //add a container for car info with an email, name and city
     $('.gallery')
@@ -22,7 +27,7 @@ const createCard = (name,img,location) => {
         //add the card info container
         .append('<div class="card-info-container"></div>')
         //add email
-        .append('<p class="card-text">' + name + '@awesomestartup.com</p>')
+        .append('<p class="card-text">' + name.replace(/\s+/g, '').toLowerCase()  + '@awesomestartup.com</p>')
         //add location
         .append('<p class="card-text cap">' + location + '</p>')
 }
