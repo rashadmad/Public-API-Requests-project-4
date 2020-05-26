@@ -32,6 +32,10 @@ const createCard = (name,img,location) => {
         .append('<p class="card-text cap">' + location() + '</p>')
 }
 
+const removeModal = () => {
+    $('modal-container').remove();
+}
+
 const createModal = (name,img,city,phoneNum,address,birthNum) => {
 
     let counter = 0
@@ -48,6 +52,9 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
         .append('<img class="modal-img" src=' + img + ' alt="profile picture of ' + name + '">')
         //add image to modal
         .append('<h3 id="name" class="modal-name cap">name</h3>')
+    $( "#modal-close-btn" ).click(() => {
+        $(".modal-container").remove();
+    })
     //the next group of items are some hwat similar sow I will use a for loop
     while (counter < 5) {
         counter = counter + 1;
