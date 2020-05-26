@@ -27,12 +27,12 @@ const createCard = (name,img,location) => {
         //add the card info container
         .append('<div class="card-info-container"></div>')
         //add email
-        .append('<p class="card-text">' + name.replace(/\s+/g, '').toLowerCase()  + '@awesomestartup.com</p>')
+        .append('<p class="card-text">' + buisnessEmail(name) + '</p>')
         //add location
-        .append('<p class="card-text cap">' + location + '</p>')
+        .append('<p class="card-text cap">' + location() + '</p>')
 }
 
-const createModal = (name,img) => {
+const createModal = (name,img,city,phoneNum,address,birthNum) => {
 
     let counter = 0
 
@@ -51,6 +51,18 @@ const createModal = (name,img) => {
         counter = counter + 1;
         $('.modal').append('<p class="modal-text"></p>')
     }
+    //add an email to the first modal text
+    //console.log($('.modal-text:nth-child(0)'))
+    //add the city
+    $('.modal-text:nth-child(3)').append(name.replace(/\s+/g, '') + buisnessEmail);
+    //add a phone number
+    $('.modal-text:nth-child(2)').innerText(phoneNum);
+    //add address
+    //$('.modal-text:nth-child(3)').innerText(address);
+    //add address
+    $('.modal-text:nth-child(4)').innerText(birthNum);
+    //need to add an hr after the second modal-text
+    $('.modal-text:nth-child(4)').after('<hr>')
 }
 
 createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
