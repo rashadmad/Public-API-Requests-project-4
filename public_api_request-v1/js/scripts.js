@@ -42,6 +42,8 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     $('.modal-container')
         .append('<div class="modal"></div>')
     $('.modal')    
+        //add close button
+        .append('<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>')
         //add image to modal
         .append('<img class="modal-img" src=' + img + ' alt="profile picture of ' + name + '">')
         //add image to modal
@@ -52,7 +54,6 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
         $('.modal').append('<p class="modal-text"></p>')
     }
     //add an email to the first modal text
-    //console.log($('.modal-text:nth-child(0)'))
     //add the city
     $('.modal-text:nth-child(2)').append(buisnessEmail(name));
     //add city
