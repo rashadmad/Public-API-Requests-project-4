@@ -54,17 +54,20 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     //add an email to the first modal text
     //console.log($('.modal-text:nth-child(0)'))
     //add the city
-    $('.modal-text:nth-child(3)').append(name.replace(/\s+/g, '') + buisnessEmail);
+    $('.modal-text:nth-child(2)').append(buisnessEmail(name));
+    //add city
+    $('.modal-text:nth-child(3)').append(city);
     //add a phone number
-    $('.modal-text:nth-child(2)').innerText(phoneNum);
-    //add address
-    //$('.modal-text:nth-child(3)').innerText(address);
-    //add address
-    $('.modal-text:nth-child(4)').innerText(birthNum);
+    $('.modal-text:nth-child(4)').append(phoneNum);
     //need to add an hr after the second modal-text
     $('.modal-text:nth-child(4)').after('<hr>')
+    //add address
+    $('.modal-text:nth-child(6)').append(address);
+    //add birth
+    $('.modal-text:nth-child(7)').append(birthDate(birthNum));
+    
 }
 
-createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
+createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
 createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
 createSearch()
