@@ -66,9 +66,15 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     $('.modal-text:nth-child(6)').append(address);
     //add birth
     $('.modal-text:nth-child(7)').append(birthDate(birthNum));
+
+    //add a modal-btn-container
+    $('.modal').append('<div class="modal-btn-container"></div>');
+    //add two buttons in there
+    $('.modal-btn-container').append('<button type="button" id="modal-prev" class="modal-prev btn">Prev</button>');
+    $('.modal-btn-container').append('<button type="button" id="modal-next" class="modal-next btn">Next</button>');
     
 }
 
 createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
-createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
-createSearch()
+// createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
+// createSearch()
