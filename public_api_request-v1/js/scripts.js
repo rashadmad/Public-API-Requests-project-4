@@ -5,7 +5,7 @@ const createSearch = () => {
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
 }
 
-const createCard = (name,img,location) => {
+const createCard = (name,img,local) => {
     //create a card and add a profile picture inside of it
     $('.gallery')
         //create a container for the image
@@ -29,7 +29,7 @@ const createCard = (name,img,location) => {
         //add email
         .append('<p class="card-text">' + buisnessEmail(name) + '</p>')
         //add location
-        .append('<p class="card-text cap">' + location() + '</p>')
+        .append('<p class="card-text cap">' + local + '</p>')
 }
 
 const removeModal = () => {
