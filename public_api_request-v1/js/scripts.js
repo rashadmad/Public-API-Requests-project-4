@@ -6,13 +6,18 @@ const createSearch = () => {
 }
 
 const createCards = (name,img,local,numberOfCards) => {
+    let i = 0;
     let counter = 0;
+
     while (counter < numberOfCards){
         counter = counter + 1;
         $('.gallery').append('<div class="card"></div>')
     }
+    while (i < numberOfCards){
      //create a card and add a profile picture inside of it   
      $( ".card" ).each(function() {
+        i = i + 1;
+        console.log(this)
         //create a container for the image
         $( this ).append('<div class="card-img-container"></div>') 
         //add the mage to the container
@@ -30,6 +35,7 @@ const createCards = (name,img,local,numberOfCards) => {
             //add location
             .append('<p class="card-text cap">' + local + '</p>')
       });
+    }
 }
 
 const removeModal = () => {
