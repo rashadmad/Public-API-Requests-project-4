@@ -5,22 +5,20 @@ const createSearch = () => {
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
 }
 
-const createCards = (name,img,local,numberOfCards) => {
+const createCards = (name,img,local) => {
     let counter = 0;
-    while (counter < numberOfCards){
-        counter = counter + 1;
-        $('.gallery').append('<div class="card"></div>')
-    }
+     $('.gallery').append('<div class="card" id="newCard"></div>')
      //create a card and add a profile picture inside of it   
-     $( ".card" ).each(function() {
+     $( "#newCard" )
         //create a container for the image
-        $( this ).append('<div class="card-img-container"></div>') 
+        .append('<div class="card-img-container"></div>') 
         //add the mage to the container
-        $( this ).find('.card-img-container').append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">')
+        .find('.card-img-container').append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">');
+     $( "#newCard" )   
         //add a container for car info with an email, name and city
-        $( this ).append('<div class="card-info-container"></div>')
+        .append('<div class="card-info-container"></div>')
         // //add data to the card 
-        $( this ).find('.card-info-container')
+        .find('.card-info-container')
             //add name
             .append('<h3 id=' + name + 'class="card-name cap">' + name + '</h3>')
             //add the card info container
@@ -29,7 +27,7 @@ const createCards = (name,img,local,numberOfCards) => {
             .append('<p class="card-text">' + buisnessEmail(name) + '</p>')
             //add location
             .append('<p class="card-text cap">' + local + '</p>')
-      });
+    $('.card#newCard').removeAttr('id');
 }
 
 const removeModal = () => {
