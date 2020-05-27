@@ -8,6 +8,8 @@ const createSearch = () => {
 const createCard = (name,img,local) => {
     //create a card and add a profile picture inside of it
     $('.gallery')
+        .append('<div class="card"></div>')
+    $('.card')
         //create a container for the image
         .append('<div class="card-img-container"></div>')
 
@@ -16,7 +18,7 @@ const createCard = (name,img,local) => {
         .append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">')
     
     //add a container for car info with an email, name and city
-    $('.gallery')
+    $('.card')
         //add the card info container
         .append('<div class="card-info-container"></div>')
 
