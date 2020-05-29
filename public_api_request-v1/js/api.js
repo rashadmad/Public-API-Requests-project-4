@@ -9,19 +9,18 @@ fetchData('https://randomuser.me/api/?results=12')
     .then(userData => {
       const results = userData.results
       results.forEach(user => {
-        createCards(user.name.first + " " + user.name.last, user.picture.thumbnail, user.location.city)
+        createCards(results.indexOf(user) ,user.name.first + " " + user.name.last, user.picture.thumbnail, user.location.city)
       })
       //Add eventListners to all card just recently generated
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         //take in any button click of a card and gather a unique token for the specific card clicked
         card.addEventListener("click", () => {
-          alert(event.target.id)
+          let idOfButtonPressed = event.target
+          console.log(idOfButtonPressed)
         })
       })
       
-  
-      //take that token and filter the results array of anything but that array
       //then take that array and develope a 
     })
 // const generateCards = (userData) => {
