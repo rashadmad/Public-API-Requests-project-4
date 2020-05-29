@@ -6,8 +6,7 @@ const createSearch = () => {
 }
 
 const createCards = (name,img,local) => {
-    let counter = 0;
-     $('.gallery').append('<div class="card" id="newCard" onClick="activateModal()"></div>')
+     $('.gallery').append('<div class="card" id="newCard" onClick="activateModal(this.id)"></div>')
      //create a card and add a profile picture inside of it   
      $( "#newCard" )
         //create a container for the image
@@ -30,8 +29,8 @@ const createCards = (name,img,local) => {
      $('.card#newCard').attr('id', nameToId(name));
 }
 
-const activateModal = (event) => {
-    console.log(this.id)
+const activateModal = (buttonClickedId) => {
+    console.log(buttonClickedId)
 }
 
 const createModal = (name,img,city,phoneNum,address,birthNum) => {
