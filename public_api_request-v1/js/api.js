@@ -5,6 +5,11 @@ const fetchData = async (url) => {
   return await res.json();
 }
 
+//add eventlistener function for the card
+const onClickOfCard = (event) => {
+  console.log('blah')
+}
+
 fetchData('https://randomuser.me/api/?results=12')
     .then(userData => {
       const results = userData.results

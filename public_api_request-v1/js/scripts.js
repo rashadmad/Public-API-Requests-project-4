@@ -5,6 +5,11 @@ const createSearch = () => {
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
 }
 
+
+const removeModal = () => {
+    $('modal-container').remove();
+}
+
 const createCards = (name,img,local) => {
     let counter = 0;
      $('.gallery').append('<div class="card" id="newCard"></div>')
@@ -26,12 +31,11 @@ const createCards = (name,img,local) => {
             //add email
             .append('<p class="card-text">' + buisnessEmail(name) + '</p>')
             //add location
-            .append('<p class="card-text cap">' + local + '</p>')
+            .append('<p class="card-text cap">' + local + '</p>');
+     $( "#newCard" )   
+            //add a button to activate a modal
+            .append('<div id=' + uniqueName(name) + 'class="button-container" onclick="onClickOfCard()"><a href="#0" class="learn-more">Learn More</a></div>');
     $('.card#newCard').removeAttr('id');
-}
-
-const removeModal = () => {
-    $('modal-container').remove();
 }
 
 const createModal = (name,img,city,phoneNum,address,birthNum) => {
