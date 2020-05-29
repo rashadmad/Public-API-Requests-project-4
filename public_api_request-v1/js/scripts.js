@@ -34,7 +34,7 @@ const createCards = (name,img,local) => {
             .append('<p class="card-text cap">' + local + '</p>');
      $( "#newCard" )   
             //add a button to activate a modal
-            .append('<div id=' + uniqueName(name) + 'class="button-container" onclick="onClickOfCard()"><a href="#0" class="learn-more">Learn More</a></div>');
+            .append('<div id=' + uniqueName(name) + ' class="button-container><a href="#0" class="learn-more" onclick="onClickOfCard()">Learn More</a></div>');
     $('.card#newCard').removeAttr('id');
 }
 

@@ -95,11 +95,15 @@ header h1 {
 }
 
 .button-container {
-    width: 100%;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+
 }
 
 .learn-more {
-    width: 100%;
+  position: static;
 }
 
 .card-img {
