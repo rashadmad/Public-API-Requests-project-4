@@ -94,6 +94,18 @@ header h1 {
     overflow: hidden;
 }
 
+.button-container {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+
+}
+
+.learn-more {
+  position: static;
+}
+
 .card-img {
     width: 95px;
     margin: 10px 15px auto 10px;
