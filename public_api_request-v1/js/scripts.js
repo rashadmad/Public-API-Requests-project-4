@@ -29,10 +29,6 @@ const createCards = (name,img,local) => {
      $('.card#newCard').attr('id', nameToId(name));
 }
 
-const activateModal = (buttonClickedId) => {
-    createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
-}
-
 const createModal = (name,img,city,phoneNum,address,birthNum) => {
 
     let counter = 0
