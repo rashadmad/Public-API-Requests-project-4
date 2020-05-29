@@ -6,7 +6,7 @@ const createSearch = () => {
 }
 
 const createCards = (name,img,local) => {
-     $('.gallery').append('<div class="card" id="newCard" onClick="activateModal(this.id)"></div>')
+     $('.gallery').append('<div class="card" id="newCard"></div>')
      //create a card and add a profile picture inside of it   
      $( "#newCard" )
         //create a container for the image
