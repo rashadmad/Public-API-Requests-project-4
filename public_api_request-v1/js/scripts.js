@@ -29,6 +29,7 @@ const createCards = (index,name,img,local) => {
             //add location
             .append('<p class="card-text cap">' + local + '</p>')
      $('.card#newCard').attr('id', idForCard);
+     return idForCard
 }
 
 const createModal = (name,img,city,phoneNum,address,birthNum) => {
