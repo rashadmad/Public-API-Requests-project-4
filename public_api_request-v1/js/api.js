@@ -17,7 +17,7 @@ fetchData('https://randomuser.me/api/?results=12')
         //take in any button click of a card and gather a unique token for the specific card clicked
         card.addEventListener("click", () => {
           let idOfButtonPressed = event.target.id
-          createModal(results[idOfButtonPressed].name.first + " " + results[idOfButtonPressed].name.last, results[idOfButtonPressed].picture.thumbnail, results[idOfButtonPressed].location.city, results[idOfButtonPressed].phone,results[idOfButtonPressed].location.city,results[idOfButtonPressed].dob)
+          createModal(results[idOfButtonPressed].name.first + " " + results[idOfButtonPressed].name.last, results[idOfButtonPressed].picture.thumbnail, results[idOfButtonPressed].location.city, results[idOfButtonPressed].phone,results[idOfButtonPressed].location.city,results[idOfButtonPressed].dob.date)
         })
       })
       
