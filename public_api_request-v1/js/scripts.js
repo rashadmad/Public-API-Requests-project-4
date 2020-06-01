@@ -25,7 +25,7 @@ const createCards = (index,name,img,local) => {
             //add the card info container
             .append('<div class="card-info-container"></div>')
             //add email
-            .append('<p class="card-text">' + buisnessEmail(name) + '</p>')
+            .append('<p class="card-text">' + businessEmail(name) + '</p>')
             //add location
             .append('<p class="card-text cap">' + local + '</p>')
      $('.card#newCard').attr('id', idForCard);
@@ -47,29 +47,29 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
         //add image to modal
         .append('<img class="modal-img" src=' + img + ' alt="profile picture of ' + name + '">')
         //add image to modal
-        .append('<h3 id="name" class="modal-name cap">name</h3>')
+        .append('<h3 class="modal-name cap">' + name + '</h3>')
     $( "#modal-close-btn" ).click(() => {
         $(".modal-container").remove();
     })
-    //the next group of items are some hwat similar sow I will use a for loop
+    //the next group of items are some what similar so I will use a for loop to generate multiples
     while (counter < 5) {
         counter = counter + 1;
         $('.modal').append('<p class="modal-text"></p>')
     }
+    //$('.modal .modal-text:nth-child(5)')
     //add an email to the first modal text
     //add the city
-    $('.modal-text:nth-child(2)').append(buisnessEmail(name));
+    $('.modal .modal-text:nth-child(4)').append(businessEmail(name));
     //add city
-    $('.modal-text:nth-child(3)').append(city);
+    $('.modal .modal-text:nth-child(5)').append(city);
+    // //need to add an hr after the second modal-text
+    $('.modal .modal-text:nth-child(5)').after('<hr>')
     //add a phone number
-    $('.modal-text:nth-child(4)').append(phoneNum);
-    //need to add an hr after the second modal-text
-    $('.modal-text:nth-child(4)').after('<hr>')
+    $('.modal .modal-text:nth-child(6)').append(phoneNum);
     //add address
-    $('.modal-text:nth-child(6)').append(address);
+    $('.modal .modal-text:nth-child(7)').append(address);
     //add birth
-    $('.modal-text:nth-child(7)').append(birthDate(birthNum));
-
+    $('.modal .modal-text:nth-child(8)').append(birthNum);
     //add a modal-btn-container
     $('.modal').append('<div class="modal-btn-container"></div>');
     //add two buttons in there
