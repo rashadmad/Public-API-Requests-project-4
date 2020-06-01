@@ -21,13 +21,13 @@ const createCards = (index,name,img,local) => {
         // //add data to the card 
         .find('.card-info-container')
             //add name
-            .append('<h3 class="card-name cap">' + name + '</h3>')
+            .append('<h3 class="card-name">' + name + '</h3>')
             //add the card info container
             .append('<div class="card-info-container"></div>')
             //add email
             .append('<p class="card-text">' + businessEmail(name) + '</p>')
             //add location
-            .append('<p class="card-text cap">' + local + '</p>')
+            .append('<p class="card-text">' + local + '</p>')
      $('.card#newCard').attr('id', idForCard);
      return idForCard
 }
@@ -47,7 +47,7 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
         //add image to modal
         .append('<img class="modal-img" src=' + img + ' alt="profile picture of ' + name + '">')
         //add image to modal
-        .append('<h3 class="modal-name cap">' + name + '</h3>')
+        .append('<h3 class="modal-name">' + name + '</h3>')
     $( "#modal-close-btn" ).click(() => {
         $(".modal-container").remove();
     })
@@ -65,9 +65,9 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     // //need to add an hr after the second modal-text
     $('.modal .modal-text:nth-child(5)').after('<hr>')
     //add a phone number
-    $('.modal .modal-text:nth-child(6)').append(phoneNum);
+    $('.modal .modal-text:nth-child(7)').append(phoneNum);
     //add address
-    $('.modal .modal-text:nth-child(7)').append(address);
+    //$('.modal .modal-text:nth-child(7)').append(address);
     //add birth
     $('.modal .modal-text:nth-child(8)').append(birthNum);
     //add a modal-btn-container
