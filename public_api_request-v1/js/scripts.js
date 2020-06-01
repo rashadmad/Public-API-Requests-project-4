@@ -67,9 +67,9 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     //add a phone number
     $('.modal .modal-text:nth-child(7)').append(phoneNum);
     //add address
-    //$('.modal .modal-text:nth-child(7)').append(address);
+    $('.modal .modal-text:nth-child(8)').append(address);
     //add birth
-    $('.modal .modal-text:nth-child(8)').append(birthDayFormating(birthNum));
+    $('.modal .modal-text:nth-child(9)').append(birthDayFormating(birthNum));
     //add a modal-btn-container
     $('.modal').append('<div class="modal-btn-container"></div>');
     //add two buttons in there
