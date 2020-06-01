@@ -77,6 +77,28 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     $('.modal-btn-container').append('<button type="button" id="modal-next" class="modal-next btn">Next</button>');
     
 }
+//create a function to update the modal 
+const updateModal = (array,indexId,foward) => {
+    let selectedUser = indexId
+
+    if(foward){
+        selectedUser = selectedUser + 1;
+    } else {
+       if(selectedUser <= 0){
+        selectedUser = 12
+       } else {
+        selectedUser = selectedUser - 1;
+       }
+    }
+
+    $('.modal-name').append(array[indexId].location.city);
+    $('.modal-img').attr('src', array[indexId].picture.thumbnail);
+    $('.modal .modal-text:nth-child(4)').append(businessEmail(array[indexId].name.first + " " + array[indexId].name.last))
+    $('.modal .modal-text:nth-child(5)').append(array[indexId].location.city);
+    $('.modal .modal-text:nth-child(7)').append(array[indexId].cell);
+    $('.modal .modal-text:nth-child(8)').append(array[indexId].location.street.number + " " + array[indexId].location.street.name + ", " + array[indexId].location.postcode);
+    $('.modal .modal-text:nth-child(9)').append(birthDayFormating(array[indexId].dob.date));
+}
 
 // createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
 // createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
