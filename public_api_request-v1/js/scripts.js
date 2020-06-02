@@ -79,17 +79,26 @@ const createModal = (index,user,name,img,city,phoneNum,address,birthNum) => {
 }
 //create a function to update the modal 
 const updateModal = (array,foward) => {
-    console.log(array.location.city)
-    if(foward){
-        selectedUser = selectedUser + 1;
-    } else {
-       if(selectedUser <= 0){
-        selectedUser = 12
-       } else {
-        selectedUser = selectedUser - 1;
-       }
-    }
+    
+    // if(foward){
+    //     selectedUser = selectedUser + 1;
+    // } else {
+    //    if(selectedUser <= 0){
+    //     selectedUser = 12
+    //    } else {
+    //     selectedUser = selectedUser - 1;
+    //    }
+    // }
 
+    //need to empty out the contents of the modal
+    $('.modal-name').text("")
+    $('.modal .modal-text:nth-child(4)').text("");
+    $('.modal .modal-text:nth-child(5)').text("");
+    $('.modal .modal-text:nth-child(7)').text("");
+    $('.modal .modal-text:nth-child(8)').text("");
+    $('.modal .modal-text:nth-child(9)').text("");
+
+    //now fill it back up with the seleceted data
     $('.modal-name').append(array.location.city);
     $('.modal-img').attr('src', array.picture.thumbnail);
     $('.modal .modal-text:nth-child(4)').append(businessEmail(array.name.first + " " + array.name.last))
