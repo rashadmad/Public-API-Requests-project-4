@@ -4,10 +4,9 @@ const createSearch = () => {
     $('.search-container').append('<input type="search" id="search-input" class="search-input" placeholder="Search...">');
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
 }
-
+//function for creating cards that take in user parameters
 const createCards = (index,name,img,local) => {
 
-    const idForCard = index;
      $('.gallery').append('<div class="card" id="newCard"></div>')
      //create a card and add a profile picture inside of it   
      $( "#newCard" )
@@ -28,14 +27,12 @@ const createCards = (index,name,img,local) => {
             .append('<p class="card-text">' + businessEmail(name) + '</p>')
             //add location
             .append('<p class="card-text">' + local + '</p>')
-     $('.card#newCard').attr('id', idForCard);
-     return idForCard
+     $('.card#newCard').attr('id', index);
 }
-
-const createModal = (name,img,city,phoneNum,address,birthNum) => {
+//create a modal that takes in user data as parameters
+const createModal = (index,user,name,img,city,phoneNum,address,birthNum) => {
 
     let counter = 0
-
     //create a container for the modal
     $('body').append('<div class="modal-container"></div>');
     //create a modal inside of the modal container
@@ -75,12 +72,14 @@ const createModal = (name,img,city,phoneNum,address,birthNum) => {
     //add two buttons in there
     $('.modal-btn-container').append('<button type="button" id="modal-prev" class="modal-prev btn">Prev</button>');
     $('.modal-btn-container').append('<button type="button" id="modal-next" class="modal-next btn">Next</button>');
-    
+    const prevButton = document.querySelector('#modal-prev');
+    const nextButton = document.querySelector('#modal-next');
+    prevButton.addEventListener("click", updateModal(user,false))
+    nextButton.addEventListener("click", updateModal(user,true))
 }
 //create a function to update the modal 
-const updateModal = (array,indexId,foward) => {
-    let selectedUser = indexId
-
+const updateModal = (array,foward) => {
+    console.log(array.location.city)
     if(foward){
         selectedUser = selectedUser + 1;
     } else {
@@ -91,13 +90,13 @@ const updateModal = (array,indexId,foward) => {
        }
     }
 
-    $('.modal-name').append(array[indexId].location.city);
-    $('.modal-img').attr('src', array[indexId].picture.thumbnail);
-    $('.modal .modal-text:nth-child(4)').append(businessEmail(array[indexId].name.first + " " + array[indexId].name.last))
-    $('.modal .modal-text:nth-child(5)').append(array[indexId].location.city);
-    $('.modal .modal-text:nth-child(7)').append(array[indexId].cell);
-    $('.modal .modal-text:nth-child(8)').append(array[indexId].location.street.number + " " + array[indexId].location.street.name + ", " + array[indexId].location.postcode);
-    $('.modal .modal-text:nth-child(9)').append(birthDayFormating(array[indexId].dob.date));
+    $('.modal-name').append(array.location.city);
+    $('.modal-img').attr('src', array.picture.thumbnail);
+    $('.modal .modal-text:nth-child(4)').append(businessEmail(array.name.first + " " + array.name.last))
+    $('.modal .modal-text:nth-child(5)').append(array.location.city);
+    $('.modal .modal-text:nth-child(7)').append(array.cell);
+    $('.modal .modal-text:nth-child(8)').append(array.location.street.number + " " + array.location.street.name + ", " + array.location.postcode);
+    $('.modal .modal-text:nth-child(9)').append(birthDayFormating(array.dob.date));
 }
 
 // createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
