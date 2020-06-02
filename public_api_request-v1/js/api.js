@@ -6,7 +6,9 @@ const fetchData = async (url) => {
 //Get and display 12 random users with usa nationality
 fetchData('https://randomuser.me/api/?results=12&nat=us')
     .then(userData => {
+      // this gets you to the user data and allows you to choose it by index
       const users = userData.results
+      //this for loop allows you to create multiple cards 
       users.forEach(user => {
         createCards(users.indexOf(user),user.name.first + " " + user.name.last, user.picture.thumbnail, user.location.city)
       })
