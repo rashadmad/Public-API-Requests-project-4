@@ -29,16 +29,8 @@ const createCards = (index,name,img,local) => {
             //add email
             .append('<p class="card-text">' + businessEmail(name) + '</p>')
             //add location
-<<<<<<< HEAD
-            .append('<p class="card-text cap">' + local + '</p>');
-     $( "#newCard" )   
-            //add a button to activate a modal
-            .append('<div id=' + uniqueName(name) + ' class="button-container><a href="#0" class="learn-more" onclick="onClickOfCard()">Learn More</a></div>');
-    $('.card#newCard').removeAttr('id');
-=======
             .append('<p class="card-text">' + local + '</p>')
      $('.card#newCard').attr('id', index);
->>>>>>> interactivity
 }
 //create a modal that takes in user data as parameters
 const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => {
