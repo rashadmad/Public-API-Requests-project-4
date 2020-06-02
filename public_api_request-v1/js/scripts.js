@@ -88,7 +88,7 @@ const updateModal = (arrayOfObjs,specificUser,foward) => {
         selectedUser = selectedUser + 1;
     } else {
        if(selectedUser <= 0){
-        selectedUser = 12
+        selectedUser = userAmount
        } else {
         selectedUser = selectedUser - 1;
        }
