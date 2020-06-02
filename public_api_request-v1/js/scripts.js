@@ -80,15 +80,16 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
     prevButton.addEventListener("click", updateModal(userData,index,false))
     nextButton.addEventListener("click", updateModal(userData,index,true))
 }
-//create a function to update the modal 
-const updateModal = (arrayOfObjs,specificUser,foward) => {
+/* create a function to update the modal the idea here is that when a modal button is pressed -prev or next- 
+the data will update in the modal according to either minus one or plus one of the index of the original user. With that said 
+there is opportunity for it to break for the last user therefore we need to start back at zero when we get to the last user  */
+const updateModal = (arrayOfObjs,specificUser,forward) => {
     let selectedUser = 0;
-
-    if(foward){
+    if(forward){
         selectedUser = selectedUser + 1;
     } else {
        if(selectedUser <= 0){
-        selectedUser = userAmount
+        selectedUser = userAmount - 1;
        } else {
         selectedUser = selectedUser - 1;
        }
