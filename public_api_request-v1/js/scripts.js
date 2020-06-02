@@ -106,9 +106,3 @@ const updateModal = (arrayOfObjs,specificUser,foward) => {
     $('.modal .modal-text:nth-child(8)').append(arrayOfObjs[specificUser].location.street.number + " " + arrayOfObjs[specificUser].location.street.name + ", " + arrayOfObjs[specificUser].location.postcode);
     $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(arrayOfObjs[specificUser].dob.date));
 }
-
-
-
-// createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
-// createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
-// createSearch()

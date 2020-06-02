@@ -1,16 +1,10 @@
-//Get and display 12 random users
-
+//utilizing fetch to work with the random generator api
 const fetchData = async (url) => {
   const res = await fetch(url);
   return await res.json();
 }
-
-//add eventlistener function for the card
-const onClickOfCard = (event) => {
-  console.log('blah')
-}
-
-fetchData('https://randomuser.me/api/?results=12')
+//Get and display 12 random users
+fetchData('https://randomuser.me/api/?results=12&nat=us')
     .then(userData => {
       const users = userData.results
       users.forEach(user => {
@@ -32,11 +26,3 @@ fetchData('https://randomuser.me/api/?results=12')
         })
       })
     })
-
-// const generateCards = (userData) => {
-//   userData.map( userData => {
-  
-//   createCards(userData.name.first + " " + userData.results.name.last, userData.results.picture.thumbnail, userData.results.location.city)
-
-//   })
-// } 
