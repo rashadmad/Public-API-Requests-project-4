@@ -1,25 +1,28 @@
 "use strict";
+
+// create a search bar form
 const createSearch = () => {
-    // create a form and add a seach bar and submit button to it
+    //create the skeleton 
     $('.search-container').append('<input type="search" id="search-input" class="search-input" placeholder="Search...">');
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
+    //TODO: implement search functionality 
 }
-//function for creating cards that take in user parameters
+//function for creating cards that takes in different user data as parameters - the index of the user - the name of the user - an image of the user - and the location
 const createCards = (index,name,img,local) => {
-
+     //create the skeleton of the card
      $('.gallery').append('<div class="card" id="newCard"></div>')
-     //create a card and add a profile picture inside of it   
+     //I have added an id but plan on removing it as it would end up not being unique 
      $( "#newCard" )
-        //create a container for the image
+        //create a container for an image
         .append('<div class="card-img-container"></div>') 
-        //add the mage to the container
+        //add the image in to the container
         .find('.card-img-container').append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">');
      $( "#newCard" )   
-        //add a container for car info with an email, name and city
+        //add a container for the card meta data: an email, name and city
         .append('<div class="card-info-container"></div>')
-        // //add data to the card 
+        //add data to the card 
         .find('.card-info-container')
-            //add name
+            //Name
             .append('<h3 class="card-name">' + name + '</h3>')
             //add the card info container
             .append('<div class="card-info-container"></div>')
@@ -30,8 +33,8 @@ const createCards = (index,name,img,local) => {
      $('.card#newCard').attr('id', index);
 }
 //create a modal that takes in user data as parameters
-const createModal = (index,user,name,img,city,phoneNum,address,birthNum) => {
-
+const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => {
+    //this counter
     let counter = 0
     //create a container for the modal
     $('body').append('<div class="modal-container"></div>');
@@ -66,7 +69,7 @@ const createModal = (index,user,name,img,city,phoneNum,address,birthNum) => {
     //add address
     $('.modal .modal-text:nth-child(8)').append(address);
     //add birth
-    $('.modal .modal-text:nth-child(9)').append(birthDayFormating(birthNum));
+    $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(birthNum));
     //add a modal-btn-container
     $('.modal').append('<div class="modal-btn-container"></div>');
     //add two buttons in there
@@ -74,39 +77,37 @@ const createModal = (index,user,name,img,city,phoneNum,address,birthNum) => {
     $('.modal-btn-container').append('<button type="button" id="modal-next" class="modal-next btn">Next</button>');
     const prevButton = document.querySelector('#modal-prev');
     const nextButton = document.querySelector('#modal-next');
-    prevButton.addEventListener("click", updateModal(user,false))
-    nextButton.addEventListener("click", updateModal(user,true))
+    prevButton.addEventListener("click", updateModal(userData,index,false))
+    nextButton.addEventListener("click", updateModal(userData,index,true))
 }
 //create a function to update the modal 
-const updateModal = (array,foward) => {
-    
-    // if(foward){
-    //     selectedUser = selectedUser + 1;
-    // } else {
-    //    if(selectedUser <= 0){
-    //     selectedUser = 12
-    //    } else {
-    //     selectedUser = selectedUser - 1;
-    //    }
-    // }
+const updateModal = (arrayOfObjs,specificUser,foward) => {
+    let selectedUser = 0;
 
-    //need to empty out the contents of the modal
-    $('.modal-name').text("")
-    $('.modal .modal-text:nth-child(4)').text("");
-    $('.modal .modal-text:nth-child(5)').text("");
-    $('.modal .modal-text:nth-child(7)').text("");
-    $('.modal .modal-text:nth-child(8)').text("");
-    $('.modal .modal-text:nth-child(9)').text("");
+    if(foward){
+        selectedUser = selectedUser + 1;
+    } else {
+       if(selectedUser <= 0){
+        selectedUser = 12
+       } else {
+        selectedUser = selectedUser - 1;
+       }
+    }
+    //empty out the modal
+    emptyModal()
+    console.log(arrayOfObjs[specificUser])
 
-    //now fill it back up with the seleceted data
-    $('.modal-name').append(array.location.city);
-    $('.modal-img').attr('src', array.picture.thumbnail);
-    $('.modal .modal-text:nth-child(4)').append(businessEmail(array.name.first + " " + array.name.last))
-    $('.modal .modal-text:nth-child(5)').append(array.location.city);
-    $('.modal .modal-text:nth-child(7)').append(array.cell);
-    $('.modal .modal-text:nth-child(8)').append(array.location.street.number + " " + array.location.street.name + ", " + array.location.postcode);
-    $('.modal .modal-text:nth-child(9)').append(birthDayFormating(array.dob.date));
+    //now fill it back up with the selected data
+    $('.modal-name').append(arrayOfObjs[specificUser].location.city);
+    $('.modal-img').attr('src', arrayOfObjs[specificUser].picture.thumbnail);
+    $('.modal .modal-text:nth-child(4)').append(businessEmail(arrayOfObjs[specificUser].name.first + " " + arrayOfObjs[specificUser].name.last))
+    $('.modal .modal-text:nth-child(5)').append(arrayOfObjs[specificUser].location.city);
+    $('.modal .modal-text:nth-child(7)').append(arrayOfObjs[specificUser].cell);
+    $('.modal .modal-text:nth-child(8)').append(arrayOfObjs[specificUser].location.street.number + " " + arrayOfObjs[specificUser].location.street.name + ", " + arrayOfObjs[specificUser].location.postcode);
+    $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(arrayOfObjs[specificUser].dob.date));
 }
+
+
 
 // createModal("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois", "(773)320-5797", "123 Portland Ave., Portland, OR 97204", "10/21/2015")
 // createCard("Mike Gray","https://randomuser.me/api/portraits/men/19.jpg", "Chicago, Illinois")
