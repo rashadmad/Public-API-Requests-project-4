@@ -9,31 +9,32 @@ const createSearch = () => {
 }
 //function for creating cards that takes in different user data as parameters - the index of the user - the name of the user - an image of the user - and the location
 const createCards = (index,name,img,local) => {
-     //create the skeleton of the card
-     $('.gallery').append('<div class="card" id="newCard"></div>')
-     //I have added an id but plan on removing it as it would end up not being unique 
-     $( "#newCard" )
-        //create a container for an image
-        .append('<div class="card-img-container"></div>') 
-        //add the image in to the container
-        .find('.card-img-container').append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">');
-     $( "#newCard" )   
-        //add a container for the card meta data: an email, name and city
+    //create the skeleton of the card
+    $('.gallery').append('<div class="card" id="newCard"></div>')
+    //I have added an id but plan on removing it as it would end up not being unique 
+    $( "#newCard" )
+    //create a container for an image
+    .append('<div class="card-img-container"></div>') 
+    //add the image in to the container
+    .find('.card-img-container').append('<img class="card-img" src=' + img + ' alt="profile picture of ' + name + '">');
+    $( "#newCard" )   
+    //add a container for the card meta data: an email, name and city
+    .append('<div class="card-info-container"></div>')
+    //add data to the card 
+    .find('.card-info-container')
+        //Name
+        .append('<h3 class="card-name">' + name + '</h3>')
+        //add the card info container
         .append('<div class="card-info-container"></div>')
-        //add data to the card 
-        .find('.card-info-container')
-            //Name
-            .append('<h3 class="card-name">' + name + '</h3>')
-            //add the card info container
-            .append('<div class="card-info-container"></div>')
-            //add email
-            .append('<p class="card-text">' + businessEmail(name) + '</p>')
-            //add location
-            .append('<p class="card-text">' + local + '</p>')
-     $('.card#newCard').attr('id', index);
+        //add email
+        .append('<p class="card-text">' + businessEmail(name) + '</p>')
+        //add location
+        .append('<p class="card-text">' + local + '</p>')
+    $('.card#newCard').attr('id', index);
 }
 //create a modal that takes in user data as parameters
 const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => {
+    console.log("users: " + userData + "index of user: " + index)
     //this counter
     let counter = 0
     //create a container for the modal
@@ -83,20 +84,22 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
 /* create a function to update the modal the idea here is that when a modal button is pressed -prev or next- 
 the data will update in the modal according to either minus one or plus one of the index of the original user. With that said 
 there is opportunity for it to break for the last user therefore we need to start back at zero when we get to the last user  */
-const updateModal = (arrayOfObjs,specificUser,forward) => {
-    let selectedUser = 0;
+const updateModal = (arrayOfObjs,selectedUser,forward) => {
+    console.log("users: " + arrayOfObjs + "index of user: " + selectedUser + "direction: " + forward)
+    //when the next button is clicked 
     if(forward){
         selectedUser = selectedUser + 1;
+        if(selectedUser >= userAmount){
+            selectedUser = 0;
+        }
     } else {
+    //when the prev button is clicked 
        if(selectedUser <= 0){
         selectedUser = userAmount - 1;
-       } else {
-        selectedUser = selectedUser - 1;
-       }
+       } 
     }
     //empty out the modal
     emptyModal()
-    console.log(arrayOfObjs[specificUser])
 
     //now fill it back up with the selected data
     $('.modal-name').append(arrayOfObjs[specificUser].location.city);

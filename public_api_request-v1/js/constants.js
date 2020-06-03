@@ -1,6 +1,8 @@
 
 //want to be able to choose how many users we will pull from the api
 const userAmount = 12;
+//also add nationality as well
+const nationality = "us";
 //generates a company email for employee's
 const businessEmail = (nameOfEmployee) => nameOfEmployee.replace(/\s+/g, '').toLowerCase()  + "@awestart.com"
 const birthDayFormatting = (birthday) => "Birthday: " + birthday.replace(/-/g, '/').substring(0, 10)

@@ -4,7 +4,7 @@ const fetchData = async (url) => {
   return await res.json();
 }
 //Get and display 12 random users with usa nationality
-fetchData('https://randomuser.me/api/?results=' + userAmount + '&nat=us')
+fetchData('https://randomuser.me/api/?results=' + userAmount + '&nat=' + nationality)
     .then(userData => {
       // this gets you to the user data and allows you to choose it by index
       const users = userData.results
@@ -28,3 +28,4 @@ fetchData('https://randomuser.me/api/?results=' + userAmount + '&nat=us')
         })
       })
     })
+    console.log("users: " + userData + "index of user: " + index)
