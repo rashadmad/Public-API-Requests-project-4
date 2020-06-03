@@ -48,7 +48,10 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         .append('<img class="modal-img" src=' + img + ' alt="profile picture of ' + name + '">')
         //add image to modal
         .append('<h3 class="modal-name">' + name + '</h3>')
+        //remove the modal on click
     $( "#modal-close-btn" ).click(() => {
+        //set the the previously selected user to null because it is no longer valid
+        previouslySelectedUser = null
         $(".modal-container").remove();
     })
     //the next group of items are some what similar so I will use a for loop to generate multiples
@@ -77,55 +80,41 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
     $('.modal-btn-container').append('<button type="button" id="modal-next" class="modal-next btn">Next</button>');
     const prevButton = document.querySelector('#modal-prev');
     const nextButton = document.querySelector('#modal-next');
+    /* create a function to update the modal the idea here is that when a modal button is pressed -prev or next- 
+      the data will update in the modal according to either minus one or plus one of the index of the original user. With that said 
+      there is opportunity for it to break for the last user therefore we need to start back at zero when we get to the last user  */
     prevButton.addEventListener("click", () => {
 
     })
     nextButton.addEventListener("click", () => {
-        index = parseInt(index, 10);
+        //we will gather what the current user is by finding out what the index is of card that was pressed this will only work once
+        let currentUser = modifier(index);
+        //there is no previously selected user so..
+        if(previouslySelectedUser === null) {
+            //we set the previously Selected User to the current user at this point and only at this point is the current user and previously selected user 
+            previouslySelectedUser = currentUser;
+        } else {
+            //there has been a previouslySelectedUser so now increase the value of that user
+            previouslySelectedUser = modifier(previouslySelectedUser)
+            console.log("previous user is: " + previouslySelectedUser)
+            currentUser = modifier(previouslySelectedUser)
+            previouslySelectedUser
+            debugger
+        }
         //need to empty out the modal first 
         emptyModal()
-        //increase the index upon click if the index is not already at the max if it is send it to zero
-        const modifier = (num) => ( num >= userAmount - 1 ) ? 0 : add(num,1);
-        //now fill it back up with the selected data
-        $('.modal-name').append(userData[modifier(index)].name.first + " " + userData[modifier(index)].name.last);
-        $('.modal-img').attr('src', userData[modifier(index)].picture.thumbnail);
-        $('.modal .modal-text:nth-child(4)').append(businessEmail(userData[modifier(index)].name.first + " " + userData[modifier(index)].name.last));
-        $('.modal .modal-text:nth-child(5)').append(userData[modifier(index)].location.city);
-        $('.modal .modal-text:nth-child(7)').append(userData[modifier(index)].cell);
-        $('.modal .modal-text:nth-child(8)').append(userData[modifier(index)].location.street.number + " " + userData[modifier(index)].location.street.name + ", " + userData[modifier(index)].location.postcode);
-        $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(userData[modifier(index)].dob.date));
+         //now fill it back up with the selected data
+        $('.modal-name').append(userData[currentUser].name.first + " " + userData[currentUser].name.last);
+        $('.modal-img').attr('src', userData[currentUser].picture.thumbnail);
+        $('.modal .modal-text:nth-child(4)').append(businessEmail(userData[currentUser].name.first + " " + userData[currentUser].name.last));
+        $('.modal .modal-text:nth-child(5)').append(userData[currentUser].location.city);
+        $('.modal .modal-text:nth-child(7)').append(userData[currentUser].cell);
+        $('.modal .modal-text:nth-child(8)').append(userData[currentUser].location.street.number + " " + userData[currentUser].location.street.name + ", " + userData[currentUser].location.postcode);
+        $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(userData[currentUser].dob.date));
+        console.log("current user is: " + currentUser)
         debugger
     })
 }
 
-      /* create a function to update the modal the idea here is that when a modal button is pressed -prev or next- 
-      the data will update in the modal according to either minus one or plus one of the index of the original user. With that said 
-      there is opportunity for it to break for the last user therefore we need to start back at zero when we get to the last user  */
-      const updateModal = (arrayOfObjs,selectedUser,forward) => {
-        
-        console.log(arrayOfObjs)
-        // //when the next button is clicked 
-        // if(forward){
-        //     selectedUser = selectedUser + 1;
-        //     if(selectedUser >= userAmount){
-        //         selectedUser = 0;
-        //     }
-        // } else {
-        // //when the prev button is clicked 
-        //    if(selectedUser <= 0){
-        //     selectedUser = userAmount - 1;
-        //    } 
-        // }
-        // //empty out the modal
-        // emptyModal()
 
-        // //now fill it back up with the selected data
-        // $('.modal-name').append(arrayOfObjs[selectedUser].location.city);
-        $('.modal-img').attr('src', userData.results[5].picture.thumbnail);
-        // $('.modal .modal-text:nth-child(4)').append(businessEmail(arrayOfObjs[selectedUser].name.first + " " + arrayOfObjs[selectedUser].name.last))
-        // $('.modal .modal-text:nth-child(5)').append(arrayOfObjs[selectedUser].location.city);
-        // $('.modal .modal-text:nth-child(7)').append(arrayOfObjs[selectedUser].cell);
-        // $('.modal .modal-text:nth-child(8)').append(arrayOfObjs[selectedUser].location.street.number + " " + arrayOfObjs[selectedUser].location.street.name + ", " + arrayOfObjs[selectedUser].location.postcode);
-        // $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(arrayOfObjs[selectedUser].dob.date));
-      }
 

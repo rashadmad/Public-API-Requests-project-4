@@ -25,5 +25,4 @@ fetchData('https://randomuser.me/api/?results=' + userAmount + '&nat=' + nationa
           createModal(userData.results,idOfButtonPressed,userData.results[idOfButtonPressed].name.first + " " + userData.results[idOfButtonPressed].name.last, userData.results[idOfButtonPressed].picture.thumbnail, userData.results[idOfButtonPressed].location.city, userData.results[idOfButtonPressed].cell, userData.results[idOfButtonPressed].location.street.number + " " + userData.results[idOfButtonPressed].location.street.name + ", " + userData.results[idOfButtonPressed].location.postcode, userData.results[idOfButtonPressed].dob.date)
         })
       })
-      return userData
     })
