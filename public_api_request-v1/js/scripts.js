@@ -51,7 +51,7 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         //remove the modal on click
     $( "#modal-close-btn" ).click(() => {
         //set the the previously selected user to null because it is no longer valid
-        previouslySelectedUser = null
+        previouslySelectedUser = null;
         $(".modal-container").remove();
     })
     //the next group of items are some what similar so I will use a for loop to generate multiples
@@ -92,14 +92,13 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         //there is no previously selected user so..
         if(previouslySelectedUser === null) {
             //we set the previously Selected User to the current user at this point and only at this point is the current user and previously selected user 
-            previouslySelectedUser = currentUser;
+            previouslySelectedUser = 0;
         } else {
             //there has been a previouslySelectedUser so now increase the value of that user
             previouslySelectedUser = modifier(previouslySelectedUser)
             console.log("previous user is: " + previouslySelectedUser)
             currentUser = modifier(previouslySelectedUser)
             previouslySelectedUser
-            debugger
         }
         //need to empty out the modal first 
         emptyModal()
