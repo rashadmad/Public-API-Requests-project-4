@@ -34,7 +34,6 @@ const createCards = (index,name,img,local) => {
 }
 //create a modal that takes in user data as parameters
 const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => {
-    console.log("users: " + userData + "index of user: " + index)
     //this counter
     let counter = 0
     //create a container for the modal
@@ -85,7 +84,6 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
 the data will update in the modal according to either minus one or plus one of the index of the original user. With that said 
 there is opportunity for it to break for the last user therefore we need to start back at zero when we get to the last user  */
 const updateModal = (arrayOfObjs,selectedUser,forward) => {
-    console.log("users: " + arrayOfObjs + "index of user: " + selectedUser + "direction: " + forward)
     //when the next button is clicked 
     if(forward){
         selectedUser = selectedUser + 1;
@@ -103,10 +101,10 @@ const updateModal = (arrayOfObjs,selectedUser,forward) => {
 
     //now fill it back up with the selected data
     $('.modal-name').append(arrayOfObjs[specificUser].location.city);
-    $('.modal-img').attr('src', arrayOfObjs[specificUser].picture.thumbnail);
-    $('.modal .modal-text:nth-child(4)').append(businessEmail(arrayOfObjs[specificUser].name.first + " " + arrayOfObjs[specificUser].name.last))
-    $('.modal .modal-text:nth-child(5)').append(arrayOfObjs[specificUser].location.city);
-    $('.modal .modal-text:nth-child(7)').append(arrayOfObjs[specificUser].cell);
-    $('.modal .modal-text:nth-child(8)').append(arrayOfObjs[specificUser].location.street.number + " " + arrayOfObjs[specificUser].location.street.name + ", " + arrayOfObjs[specificUser].location.postcode);
-    $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(arrayOfObjs[specificUser].dob.date));
+    $('.modal-img').attr('src', arrayOfObjs[selectedUser].picture.thumbnail);
+    $('.modal .modal-text:nth-child(4)').append(businessEmail(arrayOfObjs[selectedUser].name.first + " " + arrayOfObjs[selectedUser].name.last))
+    $('.modal .modal-text:nth-child(5)').append(arrayOfObjs[selectedUser].location.city);
+    $('.modal .modal-text:nth-child(7)').append(arrayOfObjs[selectedUser].cell);
+    $('.modal .modal-text:nth-child(8)').append(arrayOfObjs[selectedUser].location.street.number + " " + arrayOfObjs[selectedUser].location.street.name + ", " + arrayOfObjs[selectedUser].location.postcode);
+    $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(arrayOfObjs[selectedUser].dob.date));
 }
