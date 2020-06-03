@@ -81,17 +81,20 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
 
     })
     nextButton.addEventListener("click", () => {
+        index = parseInt(index, 10);
+        //need to empty out the modal first 
+        emptyModal()
         //increase the index upon click if the index is not already at the max if it is send it to zero
-        const modifier = (num) => ( num >= userAmount - 1 ) ? 0 : num++;
-        console.log(modifier(index))
-        // //now fill it back up with the selected data
-        $('.modal-name').append(userData.results[modifier(index)].location.city);
-        $('.modal-img').attr('src', userData.results[modifier(index)].picture.thumbnail);
-        $('.modal .modal-text:nth-child(4)').append(businessEmail(userData[modifier].name.first + " " + userData[selectedUser].name.last))
+        const modifier = (num) => ( num >= userAmount - 1 ) ? 0 : add(num,1);
+        //now fill it back up with the selected data
+        $('.modal-name').append(userData[modifier(index)].name.first + " " + userData[modifier(index)].name.last);
+        $('.modal-img').attr('src', userData[modifier(index)].picture.thumbnail);
+        $('.modal .modal-text:nth-child(4)').append(businessEmail(userData[modifier(index)].name.first + " " + userData[modifier(index)].name.last));
         $('.modal .modal-text:nth-child(5)').append(userData[modifier(index)].location.city);
         $('.modal .modal-text:nth-child(7)').append(userData[modifier(index)].cell);
-        $('.modal .modal-text:nth-child(8)').append(userData[modifier(index)].location.street.number + " " + userData[selectedUser].location.street.name + ", " + userData[selectedUser].location.postcode);
+        $('.modal .modal-text:nth-child(8)').append(userData[modifier(index)].location.street.number + " " + userData[modifier(index)].location.street.name + ", " + userData[modifier(index)].location.postcode);
         $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(userData[modifier(index)].dob.date));
+        debugger
     })
 }
 
