@@ -18,3 +18,17 @@ const emptyModal = () => {
     $('.modal .modal-text:nth-child(9)').text("");
 }
 let currentUser = null;
+
+const searchUserCards = () => {
+    const cards = document.querySelectorAll('.card');
+    const inputValue = document.getElementById("search-input");
+    const filter = inputValue.value.toLowerCase();
+    console.log(filter)
+    for (i = 0; i < cards.length; i++) {
+        if(filter === ''){
+            cards[i].style.display = "";
+        }else if(cards[i].getAttribute('name').toLowerCase() !== filter.toLowerCase()){
+            cards[i].style.display = "none";
+        }
+    } 
+}
