@@ -3,9 +3,12 @@
 // create a search bar form
 const createSearch = () => {
     //create the skeleton 
-    $('.search-container').append('<input type="search" id="search-input" class="search-input" placeholder="Search...">');
+    $('.search-container').append('<input type="search" id="search-input" onkeyup="searchUserCards()" class="search-input" placeholder="Search...">');
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
-    //TODO: implement search functionality 
+    //search the display of cards
+    const searchUserCards = () => {
+        
+    }
 }
 createSearch()
 //function for creating cards that takes in different user data as parameters - the index of the user - the name of the user - an image of the user - and the location
