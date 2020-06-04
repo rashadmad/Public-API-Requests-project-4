@@ -28,9 +28,10 @@ const searchUserCards = () => {
         //this handles when a search is empty it shows all elements
         if(filter === ''){
             cards[i].style.display = "";
-        } else if(cards[i].getAttribute('name').toLowerCase() === filter.toLowerCase()){
+        } else if(cards[i].getAttribute('name').toLowerCase().indexOf(filter) > -1){
             cards[i].style.display = "";
         } else {
+            //when a search does not match
             cards[i].style.display = "none";
         }
     } 
