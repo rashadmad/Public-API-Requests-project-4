@@ -14,7 +14,7 @@ fetchData('https://randomuser.me/api/?results=' + userAmount + '&nat=' + nationa
       })
       return userData
     })
-      //Add eventListners to all card just recently generated
+      //Add event listeners to all card just recently generated
     .then(userData => {
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
