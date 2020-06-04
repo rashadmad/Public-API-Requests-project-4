@@ -25,9 +25,12 @@ const searchUserCards = () => {
     const filter = inputValue.value.toLowerCase();
     console.log(filter)
     for (i = 0; i < cards.length; i++) {
+        //this handles when a search is empty it shows all elements
         if(filter === ''){
             cards[i].style.display = "";
-        }else if(cards[i].getAttribute('name').toLowerCase() !== filter.toLowerCase()){
+        } else if(cards[i].getAttribute('name').toLowerCase() === filter.toLowerCase()){
+            cards[i].style.display = "";
+        } else {
             cards[i].style.display = "none";
         }
     } 

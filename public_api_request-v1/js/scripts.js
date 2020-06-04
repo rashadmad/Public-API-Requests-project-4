@@ -5,7 +5,7 @@ const createSearch = () => {
     
     //create the skeleton 
     $('.search-container').append('<input type="search" id="search-input" onkeyup="searchUserCards()" class="search-input" placeholder="Search...">');
-    $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
+    $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" onClick="searchUserCards()" class="search-submit">');
     //search the display of cards
 }
 createSearch()
