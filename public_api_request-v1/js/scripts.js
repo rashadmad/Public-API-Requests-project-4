@@ -7,10 +7,12 @@ const createSearch = () => {
     $('.search-container').append('<input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">');
     //TODO: implement search functionality 
 }
+createSearch()
 //function for creating cards that takes in different user data as parameters - the index of the user - the name of the user - an image of the user - and the location
 const createCards = (index,name,img,local) => {
     //create the skeleton of the card
     $('.gallery').append('<div class="card" id="newCard"></div>')
+    $( "#newCard" ).attr('name', name)
     //I have added an id but plan on removing it as it would end up not being unique 
     $( "#newCard" )
     //create a container for an image
@@ -99,7 +101,7 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         emptyModal()
         //now fill it back up with the selected data
         $('.modal-name').append(userData[currentUser].name.first + " " + userData[currentUser].name.last);
-        $('.modal-img').attr('src', userData[currentUser].picture.thumbnail);
+        $('.modal-img').attr('src', userData[currentUser].picture.large);
         $('.modal .modal-text:nth-child(4)').append(businessEmail(userData[currentUser].name.first + " " + userData[currentUser].name.last));
         $('.modal .modal-text:nth-child(5)').append(userData[currentUser].location.city);
         $('.modal .modal-text:nth-child(7)').append(userData[currentUser].cell);
@@ -118,7 +120,7 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         emptyModal()
          //now fill it back up with the selected data
         $('.modal-name').append(userData[currentUser].name.first + " " + userData[currentUser].name.last);
-        $('.modal-img').attr('src', userData[currentUser].picture.thumbnail);
+        $('.modal-img').attr('src', userData[currentUser].picture.large);
         $('.modal .modal-text:nth-child(4)').append(businessEmail(userData[currentUser].name.first + " " + userData[currentUser].name.last));
         $('.modal .modal-text:nth-child(5)').append(userData[currentUser].location.city);
         $('.modal .modal-text:nth-child(7)').append(userData[currentUser].cell);
