@@ -35,7 +35,9 @@ const createCards = (index,name,img,local) => {
 //create a modal that takes in user data as parameters
 const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => {
     //we will gather what the current user is by finding out what the index is of card that was pressed this will only work once
-    currentUser = index.parseInt(index, 10);
+    currentUser = parseInt(index, 10);
+    const firstUser = 0;
+    const lastUser = userAmount - 1;
     //this counter
     let counter = 0
     //create a container for the modal
@@ -53,7 +55,6 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         //remove the modal on click
     $( "#modal-close-btn" ).click(() => {
         //set the the previously selected user to null because it is no longer valid
-        previouslySelectedUser = null;
         $(".modal-container").remove();
     })
     //the next group of items are some what similar so I will use a for loop to generate multiples
@@ -88,11 +89,11 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
     prevButton.addEventListener("click", () => {
         
         //there is no previously selected user so..
-        if (currentUser === 0) {
-            currentUser = userAmount - 1;
+        if (currentUser === firstUser) { 
+            currentUser = lastUser;
         } else {
             //there has been a previouslySelectedUser so now increase the value of that user
-            currentUser = currentUserModifier(previouslySelectedUser,false)
+            currentUser = currentUser - 1;
         }
         //need to empty out the modal first 
         emptyModal()
@@ -104,20 +105,14 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         $('.modal .modal-text:nth-child(7)').append(userData[currentUser].cell);
         $('.modal .modal-text:nth-child(8)').append(userData[currentUser].location.street.number + " " + userData[currentUser].location.street.name + ", " + userData[currentUser].location.postcode);
         $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(userData[currentUser].dob.date));
-        console.log("current user is: " + currentUser)
-        console.log("prev user is: " + previouslySelectedUser)
     })
     nextButton.addEventListener("click", () => {
-        //we will gather what the current user is by finding out what the index is of card that was pressed this will only work once
-        let currentUser = currentUserModifier(index,true);
         //there is no previously selected user so..
-        if(previouslySelectedUser === null) {
-            //we set the previously Selected User to the current user at this point and only at this point is the current user and previously selected user 
-            previouslySelectedUser = 0;
+        if (currentUser === lastUser) { 
+            currentUser = firstUser;
         } else {
             //there has been a previouslySelectedUser so now increase the value of that user
-            previouslySelectedUser = currentUserModifier(previouslySelectedUser,true)
-            currentUser = currentUserModifier(previouslySelectedUser,true)
+            currentUser = currentUser + 1;
         }
         //need to empty out the modal first 
         emptyModal()
@@ -129,8 +124,6 @@ const createModal = (userData,index,name,img,city,phoneNum,address,birthNum) => 
         $('.modal .modal-text:nth-child(7)').append(userData[currentUser].cell);
         $('.modal .modal-text:nth-child(8)').append(userData[currentUser].location.street.number + " " + userData[currentUser].location.street.name + ", " + userData[currentUser].location.postcode);
         $('.modal .modal-text:nth-child(9)').append(birthDayFormatting(userData[currentUser].dob.date));
-        console.log("current user is: " + currentUser)
-        console.log("prev user is: " + previouslySelectedUser)
     })
 }
 

@@ -5,9 +5,6 @@ const nationality = "us";
 //generates a company email for employee's
 const businessEmail = (nameOfEmployee) => nameOfEmployee.replace(/\s+/g, '').toLowerCase()  + "@awestart.com"
 const birthDayFormatting = (birthday) => "Birthday: " + birthday.replace(/-/g, '/').substring(0, 10)
-//addition and subtraction function
-const add = (numA,numB) => numA + numB;
-const sub = (numA,numB) => numA - numB;
    
 let textNode = document.createTextNode(null);
 
