@@ -10,7 +10,7 @@ fetchData('https://randomuser.me/api/?results=' + userAmount + '&nat=' + nationa
     const users = userData.results
     //this for loop allows you to create multiple cards 
     users.forEach(user => {
-      createCards(users.indexOf(user),user.name.first + " " + user.name.last, user.picture.thumbnail, user.location.city)
+      createCards(users.indexOf(user),user.name.first + " " + user.name.last, user.picture.medium, user.location.city)
     })
     return userData
   })
