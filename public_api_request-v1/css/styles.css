@@ -1,4 +1,13 @@
 /* ===================================== 
+   color variables
+======================================== */
+:root {
+    --main-bg-color: #3f5256;
+    --main-theme-color: #a4e5bf;
+    --font-color: white
+  }
+
+/* ===================================== 
    Public API Request
 ======================================== */
 
@@ -16,7 +25,7 @@ html, body {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background: rgba(235, 235, 235, 0.9);
+    background: var(--main-bg-color); 
 }
 
 header {
@@ -30,7 +39,7 @@ header {
 
 header h1 {
     font-size: 1.25em;
-    color: rgba(50, 50, 50, 0.9);
+    color: var(--font-color);
     margin-top: 35px;
 }
 
@@ -50,7 +59,8 @@ header h1 {
 .search-submit {
     cursor: pointer;
     height: 33px;
-    background: rgba(245, 245, 245, 0.9);
+    color: var(--font-color);
+    background: var(--main-theme-color);
     border-radius: 0 0.25rem 0.25rem 0;
     border: 1px solid rgba(200, 200, 200, 0.9);
     transition: .4s ease-out;
@@ -87,17 +97,19 @@ header h1 {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
-    border-radius: 0.25em;
+    background: #fcf4f5;
+    border-radius: 0.9em;
     border: 1px solid rgba(50, 50, 50, 0.3);
     transition: .4s ease-out;
     overflow: hidden;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
 
 .button-container {
   margin: auto;
   width: 50%;
-  border: 3px solid green;
+  border: 3px solid var(--main-theme-color);
   padding: 10px;
 
 }
@@ -110,6 +122,8 @@ header h1 {
     width: 95px;
     margin: 10px 15px auto 10px;
     border-radius: 50%;
+    border-style: solid;
+    border-color: var(--main-theme-color);
 }
 
 .card-info-container {
@@ -152,8 +166,8 @@ header h1 {
     min-height: 415px;
     margin: 10px auto auto;
     padding-bottom: 15px;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 0.25em;
+    background: #fcf4f5;
+    border-radius: 0.9em;
     border: 1px solid rgba(100, 100, 100, 0.3);
     transition: .4s ease-out;
 }
@@ -163,17 +177,19 @@ header h1 {
     top: 15px;
     right: 15px;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    background: var(--main-bg-color);
     outline: none;
     border-radius: 0.25em;
-    border: 1px solid rgba(50, 50, 50, 0.3);
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
 }
 
 .modal-img {
     width: 150px;
     margin-top: 35px;
     border-radius: 50%;
+    border-style: solid;
+    border-color: var(--main-theme-color);
 }
 
 .modal-name {
@@ -211,11 +227,12 @@ header h1 {
     cursor: pointer;
     font-size: 0.85em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
+    color: white;
     padding: 0.75em 1.5em;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--main-bg-color);
     border-radius: 0.35em;
     transition: .4s ease-out;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
     outline: none;
   }
   
