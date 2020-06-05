@@ -24,7 +24,6 @@ const searchUserCards = () => {
     const inputValue = document.getElementById("search-input");
     const filter = inputValue.value.toLowerCase();
     
-    console.log(filter)
     for (i = 0; i < cards.length; i++) {
         //this handles when a search is empty it shows all elements
         if(filter === ''){
